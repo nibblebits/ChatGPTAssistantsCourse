@@ -1,0 +1,27 @@
+{
+    "name": "dragonzap/openai-chatgpt-assistant",
+    "description": "Provides clean abstraction for the chatgpt assistant API. Build and run assistants with a clean easy to use design",
+    "type": "library",
+    "license": "GPL-2.0-or-later",
+    "autoload": {
+        "psr-4": {
+            "Dragonzap\\": "src/Dragonzap/"
+        }
+    },    
+    "authors": [
+        {
+            "name": "Dragon Zap Publishing"
+        }
+    ],
+    "require": {
+        "laravel/framework": "^9.0|^10.0",
+        "openai-php/client": "^0.8.0",
+        "symfony/http-client": "^7.0",
+        "nyholm/psr7": "^1.8"
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
+    }
+}

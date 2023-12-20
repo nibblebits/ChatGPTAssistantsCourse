@@ -1,0 +1,10 @@
+{
+    "require": {
+        "dragonzap/openai-chatgpt-assistant": "^1.2"
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
+    }
+}
