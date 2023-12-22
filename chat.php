@@ -13,9 +13,39 @@ class BettyAssistant extends Assistant
         return 'asst_43dJhZ11hFgjynmsq9GxqUJV';
     }
 
+    public function handleFunctionFillCalendar(array $arguments) : array
+    {
+        $response = [
+            'success' => true,
+            'message' => 'The calendar entry has been set'
+        ];
+
+        $timestamp = strtotime($arguments['datetime']);
+        if ($timestamp < time()) {
+            $response = [
+                'success' => false,
+                'message' => 'You cannot timetravel into the past.'
+            ];
+        }
+
+        return $response;
+    }
+
     public function handleFunction($function, array $arguments): array|string
     {
-        return 'No functions are implemented';
+        $response = [
+            'success' => 'failed',
+            'message' => 'No such function'
+        ];
+
+        switch($function) {
+            case 'fill_calendar':
+                $response = $this->handleFunctionFillCalendar($arguments);
+            break;
+        }
+
+        return $response;
+
     }
 
 
@@ -28,10 +58,13 @@ class BettyAssistant extends Assistant
 
 $betty = new BettyAssistant(new APIConfiguration('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'));
 $conversation = $betty->newConversation();
-$conversation->sendMessage('Make a calendar entry for next week on tuesday at 4 PM in London');
+$conversation->sendMessage('Make a calendar entry for 10th January 2022 in London');
 try {
     $conversation->blockUntilResponded();
 } catch (ThreadRunResponseLastError $ex) {
     throw $ex;
 }
-echo $conversation->getResponseData()->getResponse();
+
+print_r($conversation->getResponseData());
+
+$conversation->getResponseData()->getFunctionCalls();
