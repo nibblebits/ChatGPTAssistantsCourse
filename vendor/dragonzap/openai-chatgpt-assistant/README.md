@@ -1,7 +1,7 @@
 # chatgpt-assistant
 Provides clean abstraction layer for the chatgpt assistant API. Build and run assistants with a clean easy to use design, compatible with raw PHP and also Laravel framework.
 
-[Documentation for Installation on Laravel framework](https://github.com/dragonzapeducation/chatgpt-assistant-examples/tree/main/laravel9-app)
+[Documentation for Installation on Laravel framework](https://github.com/dragonzapeducation/chatgpt-assistant-examples/tree/main/laravel10-api-app)
 
 [Documentation for Installation without Laravel framework](https://github.com/dragonzapeducation/chatgpt-assistant-examples/tree/main/JustSimplePhp)
 

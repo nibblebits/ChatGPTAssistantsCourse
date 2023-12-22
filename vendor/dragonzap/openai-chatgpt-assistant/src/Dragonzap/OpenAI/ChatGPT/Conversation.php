@@ -12,6 +12,7 @@
 namespace Dragonzap\OpenAI\ChatGPT;
 
 use Dragonzap\OpenAI\ChatGPT\Exceptions\IncompleteRunException;
+use Dragonzap\OpenAI\ChatGPT\Exceptions\ThreadRunResponseLastError;
 use Dragonzap\OpenAI\ChatGPT\Exceptions\UnsupportedRunException;
 use OpenAI\Responses\Threads\Runs\ThreadRunResponse;
 use OpenAI\Responses\Threads\ThreadResponse;
@@ -136,32 +137,11 @@ class Conversation
                 break;
         }
 
+
         return $run_state;
     }
 
-    /**
-     * Retrieves the response from the assistant and then resets the current run.
-     *
-     * @deprecated This method is deprecated and will be removed in version 2.0.0.
-     * Instead, use the getResponseData()->getResponse() method to obtain the response data.
-     * 
-     * @throws IncompleteRunException If the current run's status is not 'completed'.
-     * @return string The response from the assistant.
-     */
-    public function getResponse(): string
-    {
-        if ($this->current_run->status != 'completed') {
-            throw new IncompleteRunException('The status of the job is not yet completed. Run Conversation::getRunState() to refresh the cache of this current run if it returns RunState::COMPLETED you will be able to get a response by calling this function again');
-        }
-
-        $response = $this->assistant->getOpenAIClient()->threads()->messages()->list($this->thread->id, [
-            'limit' => 1,
-        ]);
-
-        $this->setCurrentRun(null);
-        return $response->data[0]->content[0]->text->value;
-    }
-
+  
     /**
      * Retrieves the response data for the current or last run.
      *
@@ -212,6 +192,8 @@ class Conversation
      * 
      * Warning: Ideally should only be used in API's or console applications, avoid use if possible as long timeouts
      * disrupt user experience and strain the web server.
+     *
+     * @throws ThreadRunResponseLastError If there is an error with the current run.
      */
     public function blockUntilResponded(): RunState
     {
@@ -223,9 +205,11 @@ class Conversation
 
         return $run_state;
     }
+    
 
     private function handleRequiresAction()
     {
+
         // We dont support action types that are not of submit_tool_outputs
         if ($this->current_run->requiredAction->type != 'submit_tool_outputs') {
             throw new UnsupportedRunException('The library does not yet handle action types of ' . $this->current_run->requiredAction->type);
@@ -266,6 +250,20 @@ class Conversation
         $this->setCurrentRun($current_run);
 
     }
+
+    /**
+     * Retrieves the current state of the run associated with this thread/conversation.
+     * This method checks whether the current run exists and, if so, updates its state
+     * based on the latest data from the OpenAI client. It handles any errors encountered 
+     * during the run and responds appropriately if the run requires further action.
+     * 
+     * 
+     * NOTE: even though we throw a ThreadRunResponseLastError when an error occurs, the RunState can still be "failed" without an exception being thrown
+     * as a failed run does not necessarily warrent an exception. Only an API error will cause an exception.
+     * 
+     * @return RunState The current state of the run.
+     * @throws ThreadRunResponseLastError If there is an error with the current run. 
+     */
     public function getRunState(): RunState
     {
         if (!$this->current_run) {
@@ -277,6 +275,10 @@ class Conversation
             runId: $this->current_run->id,
         ));
 
+        if ($this->current_run->lastError) {
+            // We have an error of some kind.
+            throw new ThreadRunResponseLastError($this->current_run->lastError->message, $this->current_run->lastError->code);
+        }
 
         if ($this->current_run->status == 'requires_action') {
             $this->handleRequiresAction();

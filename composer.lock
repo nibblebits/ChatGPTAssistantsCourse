@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f400f0e088057ef61dd96e22ba013289",
+    "content-hash": "f16b7833383dc8380afc31a32969276b",
     "packages": [
         {
             "name": "brick/math",
@@ -436,16 +436,16 @@
         },
         {
             "name": "dragonzap/openai-chatgpt-assistant",
-            "version": "v1.2.0",
+            "version": "v2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dragonzapeducation/chatgpt-assistant.git",
-                "reference": "6ed661f5393d56c34ae553392340483bb637dd36"
+                "reference": "7c04ad34143e3eb82cd0c919d63a53ce35b1fd77"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dragonzapeducation/chatgpt-assistant/zipball/6ed661f5393d56c34ae553392340483bb637dd36",
-                "reference": "6ed661f5393d56c34ae553392340483bb637dd36",
+                "url": "https://api.github.com/repos/dragonzapeducation/chatgpt-assistant/zipball/7c04ad34143e3eb82cd0c919d63a53ce35b1fd77",
+                "reference": "7c04ad34143e3eb82cd0c919d63a53ce35b1fd77",
                 "shasum": ""
             },
             "require": {
@@ -472,9 +472,9 @@
             "description": "Provides clean abstraction for the chatgpt assistant API. Build and run assistants with a clean easy to use design",
             "support": {
                 "issues": "https://github.com/dragonzapeducation/chatgpt-assistant/issues",
-                "source": "https://github.com/dragonzapeducation/chatgpt-assistant/tree/v1.2.0"
+                "source": "https://github.com/dragonzapeducation/chatgpt-assistant/tree/v2.0.0"
             },
-            "time": "2023-12-09T16:15:43+00:00"
+            "time": "2023-12-22T17:53:30+00:00"
         },
         {
             "name": "egulias/email-validator",
@@ -764,16 +764,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v10.38.1",
+            "version": "v10.38.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "ced4689f495213e9d23995b36098f12a802cc15b"
+                "reference": "43da808391da3540d44a8dfeb4e46da4ad8f5723"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/ced4689f495213e9d23995b36098f12a802cc15b",
-                "reference": "ced4689f495213e9d23995b36098f12a802cc15b",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/43da808391da3540d44a8dfeb4e46da4ad8f5723",
+                "reference": "43da808391da3540d44a8dfeb4e46da4ad8f5723",
                 "shasum": ""
             },
             "require": {
@@ -965,7 +965,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2023-12-20T14:52:12+00:00"
+            "time": "2023-12-22T14:39:10+00:00"
         },
         {
             "name": "laravel/prompts",
@@ -2000,16 +2000,16 @@
         },
         {
             "name": "openai-php/client",
-            "version": "v0.8.0",
+            "version": "v0.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/openai-php/client.git",
-                "reference": "d0e4996f6446ced6ad35ec0ea6af20e3596c648f"
+                "reference": "ce84f541fe8a2869de7f48030d5757be1fd604c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/openai-php/client/zipball/d0e4996f6446ced6ad35ec0ea6af20e3596c648f",
-                "reference": "d0e4996f6446ced6ad35ec0ea6af20e3596c648f",
+                "url": "https://api.github.com/repos/openai-php/client/zipball/ce84f541fe8a2869de7f48030d5757be1fd604c9",
+                "reference": "ce84f541fe8a2869de7f48030d5757be1fd604c9",
                 "shasum": ""
             },
             "require": {
@@ -2022,17 +2022,17 @@
                 "psr/http-message": "^1.1.0|^2.0.0"
             },
             "require-dev": {
-                "guzzlehttp/guzzle": "^7.8.0",
-                "guzzlehttp/psr7": "^2.6.1",
-                "laravel/pint": "^1.13.6",
-                "mockery/mockery": "^1.6.6",
+                "guzzlehttp/guzzle": "^7.8.1",
+                "guzzlehttp/psr7": "^2.6.2",
+                "laravel/pint": "^1.13.7",
+                "mockery/mockery": "^1.6.7",
                 "nunomaduro/collision": "^7.10.0",
-                "pestphp/pest": "^2.25.0",
-                "pestphp/pest-plugin-arch": "^2.4.1",
+                "pestphp/pest": "^2.28.1",
+                "pestphp/pest-plugin-arch": "^2.5",
                 "pestphp/pest-plugin-type-coverage": "^2.5.0",
-                "phpstan/phpstan": "^1.10.44",
+                "phpstan/phpstan": "^1.10.50",
                 "rector/rector": "^0.16.0",
-                "symfony/var-dumper": "^6.3.8"
+                "symfony/var-dumper": "^6.4"
             },
             "type": "library",
             "autoload": {
@@ -2072,7 +2072,7 @@
             ],
             "support": {
                 "issues": "https://github.com/openai-php/client/issues",
-                "source": "https://github.com/openai-php/client/tree/v0.8.0"
+                "source": "https://github.com/openai-php/client/tree/v0.8.1"
             },
             "funding": [
                 {
@@ -2088,7 +2088,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-11-23T14:04:47+00:00"
+            "time": "2023-12-22T15:18:26+00:00"
         },
         {
             "name": "php-http/discovery",

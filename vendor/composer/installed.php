@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => '__root__',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => NULL,
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => 'f4831095b837cbd38f65082a5aaccb4a6878f5cd',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => NULL,
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => 'f4831095b837cbd38f65082a5aaccb4a6878f5cd',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -74,9 +74,9 @@
             'dev_requirement' => false,
         ),
         'dragonzap/openai-chatgpt-assistant' => array(
-            'pretty_version' => 'v1.2.0',
-            'version' => '1.2.0.0',
-            'reference' => '6ed661f5393d56c34ae553392340483bb637dd36',
+            'pretty_version' => 'v2.0.0',
+            'version' => '2.0.0.0',
+            'reference' => '7c04ad34143e3eb82cd0c919d63a53ce35b1fd77',
             'type' => 'library',
             'install_path' => __DIR__ . '/../dragonzap/openai-chatgpt-assistant',
             'aliases' => array(),
@@ -121,205 +121,205 @@
         'illuminate/auth' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v10.38.1',
+                0 => 'v10.38.2',
             ),
         ),
         'illuminate/broadcasting' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v10.38.1',
+                0 => 'v10.38.2',
             ),
         ),
         'illuminate/bus' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v10.38.1',
+                0 => 'v10.38.2',
             ),
         ),
         'illuminate/cache' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v10.38.1',
+                0 => 'v10.38.2',
             ),
         ),
         'illuminate/collections' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v10.38.1',
+                0 => 'v10.38.2',
             ),
         ),
         'illuminate/conditionable' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v10.38.1',
+                0 => 'v10.38.2',
             ),
         ),
         'illuminate/config' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v10.38.1',
+                0 => 'v10.38.2',
             ),
         ),
         'illuminate/console' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v10.38.1',
+                0 => 'v10.38.2',
             ),
         ),
         'illuminate/container' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v10.38.1',
+                0 => 'v10.38.2',
             ),
         ),
         'illuminate/contracts' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v10.38.1',
+                0 => 'v10.38.2',
             ),
         ),
         'illuminate/cookie' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v10.38.1',
+                0 => 'v10.38.2',
             ),
         ),
         'illuminate/database' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v10.38.1',
+                0 => 'v10.38.2',
             ),
         ),
         'illuminate/encryption' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v10.38.1',
+                0 => 'v10.38.2',
             ),
         ),
         'illuminate/events' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v10.38.1',
+                0 => 'v10.38.2',
             ),
         ),
         'illuminate/filesystem' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v10.38.1',
+                0 => 'v10.38.2',
             ),
         ),
         'illuminate/hashing' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v10.38.1',
+                0 => 'v10.38.2',
             ),
         ),
         'illuminate/http' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v10.38.1',
+                0 => 'v10.38.2',
             ),
         ),
         'illuminate/log' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v10.38.1',
+                0 => 'v10.38.2',
             ),
         ),
         'illuminate/macroable' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v10.38.1',
+                0 => 'v10.38.2',
             ),
         ),
         'illuminate/mail' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v10.38.1',
+                0 => 'v10.38.2',
             ),
         ),
         'illuminate/notifications' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v10.38.1',
+                0 => 'v10.38.2',
             ),
         ),
         'illuminate/pagination' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v10.38.1',
+                0 => 'v10.38.2',
             ),
         ),
         'illuminate/pipeline' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v10.38.1',
+                0 => 'v10.38.2',
             ),
         ),
         'illuminate/process' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v10.38.1',
+                0 => 'v10.38.2',
             ),
         ),
         'illuminate/queue' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v10.38.1',
+                0 => 'v10.38.2',
             ),
         ),
         'illuminate/redis' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v10.38.1',
+                0 => 'v10.38.2',
             ),
         ),
         'illuminate/routing' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v10.38.1',
+                0 => 'v10.38.2',
             ),
         ),
         'illuminate/session' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v10.38.1',
+                0 => 'v10.38.2',
             ),
         ),
         'illuminate/support' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v10.38.1',
+                0 => 'v10.38.2',
             ),
         ),
         'illuminate/testing' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v10.38.1',
+                0 => 'v10.38.2',
             ),
         ),
         'illuminate/translation' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v10.38.1',
+                0 => 'v10.38.2',
             ),
         ),
         'illuminate/validation' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v10.38.1',
+                0 => 'v10.38.2',
             ),
         ),
         'illuminate/view' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v10.38.1',
+                0 => 'v10.38.2',
             ),
         ),
         'laravel/framework' => array(
-            'pretty_version' => 'v10.38.1',
-            'version' => '10.38.1.0',
-            'reference' => 'ced4689f495213e9d23995b36098f12a802cc15b',
+            'pretty_version' => 'v10.38.2',
+            'version' => '10.38.2.0',
+            'reference' => '43da808391da3540d44a8dfeb4e46da4ad8f5723',
             'type' => 'library',
             'install_path' => __DIR__ . '/../laravel/framework',
             'aliases' => array(),
@@ -449,9 +449,9 @@
             'dev_requirement' => false,
         ),
         'openai-php/client' => array(
-            'pretty_version' => 'v0.8.0',
-            'version' => '0.8.0.0',
-            'reference' => 'd0e4996f6446ced6ad35ec0ea6af20e3596c648f',
+            'pretty_version' => 'v0.8.1',
+            'version' => '0.8.1.0',
+            'reference' => 'ce84f541fe8a2869de7f48030d5757be1fd604c9',
             'type' => 'library',
             'install_path' => __DIR__ . '/../openai-php/client',
             'aliases' => array(),

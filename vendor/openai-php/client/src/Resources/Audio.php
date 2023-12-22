@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace OpenAI\Resources;
 
 use OpenAI\Contracts\Resources\AudioContract;
+use OpenAI\Responses\Audio\SpeechStreamResponse;
 use OpenAI\Responses\Audio\TranscriptionResponse;
 use OpenAI\Responses\Audio\TranslationResponse;
 use OpenAI\ValueObjects\Transporter\Payload;
@@ -29,9 +30,25 @@ final class Audio implements AudioContract
     }
 
     /**
+     * Generates streamed audio from the input text.
+     *
+     * @see https://platform.openai.com/docs/api-reference/audio/createSpeech
+     *
+     * @param  array<string, mixed>  $parameters
+     */
+    public function speechStreamed(array $parameters): SpeechStreamResponse
+    {
+        $payload = Payload::create('audio/speech', $parameters);
+
+        $response = $this->transporter->requestStream($payload);
+
+        return new SpeechStreamResponse($response);
+    }
+
+    /**
      * Transcribes audio into the input language.
      *
-     * @see https://platform.openai.com/docs/api-reference/audio/create
+     * @see https://platform.openai.com/docs/api-reference/audio/createTranscription
      *
      * @param  array<string, mixed>  $parameters
      */
@@ -48,7 +65,7 @@ final class Audio implements AudioContract
     /**
      * Translates audio into English.
      *
-     * @see https://platform.openai.com/docs/api-reference/audio/create
+     * @see https://platform.openai.com/docs/api-reference/audio/createTranslation
      *
      * @param  array<string, mixed>  $parameters
      */

@@ -3,6 +3,7 @@ require "vendor/autoload.php";
 use Dragonzap\OpenAI\ChatGPT\APIConfiguration;
 use Dragonzap\OpenAI\ChatGPT\Assistant;
 use Dragonzap\OpenAI\ChatGPT\ConversationIdentificationData;
+use Dragonzap\OpenAI\ChatGPT\Exceptions\ThreadRunResponseLastError;
 
 /**
  * Run the console chat
@@ -42,22 +43,21 @@ class JessicaAssistant extends Assistant
         $success = false;
         $message = 'We could not locate the weather for ' . $arguments['location'] . ' as it is not in our database';
 
-        switch(strtolower($arguments['location']))
-        {
+        switch (strtolower($arguments['location'])) {
             case 'cardiff':
                 $success = true;
                 $message = 'The weather in wales, cardiff is Rainy today';
-            break;
+                break;
 
             case 'london':
                 $success = false;
                 $message = 'As usual england is freezing';
-            break;
+                break;
 
             case 'perth':
                 $success = false;
                 $message = 'Australia, Perth is very hot at 45 Celcius everyone is cooking';
-            break;
+                break;
         }
         return [
             'success' => $success,
@@ -75,8 +75,7 @@ class JessicaAssistant extends Assistant
     {
         $response = [];
 
-        switch($function)
-        {
+        switch ($function) {
             case 'get_weather':
                 $response = $this->handleGetWeatherFunction($arguments);
                 break;
@@ -93,16 +92,20 @@ class JessicaAssistant extends Assistant
 }
 
 // Replace the API Key with your own chatgpt API key
-$assistant = new JessicaAssistant(new APIConfiguration('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'));
+$assistant = new JessicaAssistant(new APIConfiguration('OPENAI-API-KEY-HERE'));
 $conversation = $assistant->newConversation();
 
-while(1)
-{
+while (1) {
     $input_message = fgets(STDIN);
     echo 'User:' . $input_message . "\n";
     $conversation->sendMessage($input_message);
-    $conversation->blockUntilResponded();
-    
+
+    try {
+        $conversation->blockUntilResponded();
+    } catch (ThreadRunResponseLastError $ex) {
+        throw $ex;
+    }
+
     echo 'Assistant: ' . $conversation->getResponseData()->getResponse() . "\n";
 
     // Easily get the function calls that took place during the ChatGPT run.
@@ -126,6 +129,6 @@ while(1)
 
     // )
 
-    
+
 }
 
