@@ -58,13 +58,17 @@ class BettyAssistant extends Assistant
 
 $betty = new BettyAssistant(new APIConfiguration('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'));
 $conversation = $betty->newConversation();
-$conversation->sendMessage('Make a calendar entry for 10th January 2022 in London');
-try {
-    $conversation->blockUntilResponded();
-} catch (ThreadRunResponseLastError $ex) {
-    throw $ex;
+
+while(true)
+{
+    $input_line = fgets(STDIN);
+    $conversation->sendMessage($input_line);
+    try {
+        $conversation->blockUntilResponded();
+    } catch (ThreadRunResponseLastError $ex) {
+        throw $ex;
+    }
+
+    echo 'Betty: ' . $conversation->getResponseData()->getResponse() . "\n";
+    
 }
-
-print_r($conversation->getResponseData());
-
-$conversation->getResponseData()->getFunctionCalls();
