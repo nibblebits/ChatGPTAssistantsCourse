@@ -13,6 +13,7 @@ namespace Dragonzap\OpenAI\ChatGPT;
 
 use Dragonzap\OpenAI\ChatGPT\Exceptions\IncompleteRunException;
 use Dragonzap\OpenAI\ChatGPT\Exceptions\ThreadRunResponseLastError;
+use Dragonzap\OpenAI\ChatGPT\Exceptions\TimeoutException;
 use Dragonzap\OpenAI\ChatGPT\Exceptions\UnsupportedRunException;
 use OpenAI\Responses\Threads\Runs\ThreadRunResponse;
 use OpenAI\Responses\Threads\ThreadResponse;
@@ -187,24 +188,33 @@ class Conversation
         return $this->response_data;
     }
 
-    /**
+  /**
      * Blocks the execution until ChatGPT responds to a message or there was a failure of some kind
      * 
      * Warning: Ideally should only be used in API's or console applications, avoid use if possible as long timeouts
      * disrupt user experience and strain the web server.
      *
+     * @param $timeout_seconds The total seconds we will wait for completion or failrue. Use zero for forever
+     * @throws TimeoutException If we timeout we will throw a Timeout exception.
      * @throws ThreadRunResponseLastError If there is an error with the current run.
      */
-    public function blockUntilResponded(): RunState
+    public function blockUntilResponded($timeout_seconds=0): RunState
     {
         $run_state = $this->getRunState();
+        $attempts = 0;
         while ($run_state != RunState::COMPLETED && $run_state != RunState::FAILED) {
+            if ($timeout_seconds != 0 && $attempts == $timeout_seconds)
+            {
+                throw new TimeoutException('Timed out after ' . $timeout_seconds . ' seconds');
+            }
             sleep(1);
+            $attempts++;
             $run_state = $this->getRunState();
         }
 
         return $run_state;
     }
+    
     
 
     private function handleRequiresAction()

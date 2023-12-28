@@ -448,17 +448,17 @@
         },
         {
             "name": "dragonzap/openai-chatgpt-assistant",
-            "version": "v2.0.0",
-            "version_normalized": "2.0.0.0",
+            "version": "v2.1.0",
+            "version_normalized": "2.1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dragonzapeducation/chatgpt-assistant.git",
-                "reference": "7c04ad34143e3eb82cd0c919d63a53ce35b1fd77"
+                "reference": "481216deb9522dd5b483e1c29f144f1de0a96b69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dragonzapeducation/chatgpt-assistant/zipball/7c04ad34143e3eb82cd0c919d63a53ce35b1fd77",
-                "reference": "7c04ad34143e3eb82cd0c919d63a53ce35b1fd77",
+                "url": "https://api.github.com/repos/dragonzapeducation/chatgpt-assistant/zipball/481216deb9522dd5b483e1c29f144f1de0a96b69",
+                "reference": "481216deb9522dd5b483e1c29f144f1de0a96b69",
                 "shasum": ""
             },
             "require": {
@@ -467,7 +467,7 @@
                 "openai-php/client": "^0.8.0",
                 "symfony/http-client": "^7.0"
             },
-            "time": "2023-12-22T17:53:30+00:00",
+            "time": "2023-12-23T20:39:04+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -487,7 +487,7 @@
             "description": "Provides clean abstraction for the chatgpt assistant API. Build and run assistants with a clean easy to use design",
             "support": {
                 "issues": "https://github.com/dragonzapeducation/chatgpt-assistant/issues",
-                "source": "https://github.com/dragonzapeducation/chatgpt-assistant/tree/v2.0.0"
+                "source": "https://github.com/dragonzapeducation/chatgpt-assistant/tree/v2.1.0"
             },
             "install-path": "../dragonzap/openai-chatgpt-assistant"
         },
@@ -791,17 +791,17 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v10.38.2",
-            "version_normalized": "10.38.2.0",
+            "version": "v10.39.0",
+            "version_normalized": "10.39.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "43da808391da3540d44a8dfeb4e46da4ad8f5723"
+                "reference": "114926b07bfb5fbf2545c03aa2ce5c8c37be650c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/43da808391da3540d44a8dfeb4e46da4ad8f5723",
-                "reference": "43da808391da3540d44a8dfeb4e46da4ad8f5723",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/114926b07bfb5fbf2545c03aa2ce5c8c37be650c",
+                "reference": "114926b07bfb5fbf2545c03aa2ce5c8c37be650c",
                 "shasum": ""
             },
             "require": {
@@ -904,7 +904,7 @@
                 "league/flysystem-sftp-v3": "^3.0",
                 "mockery/mockery": "^1.5.1",
                 "nyholm/psr7": "^1.2",
-                "orchestra/testbench-core": "^8.15.1",
+                "orchestra/testbench-core": "^8.18",
                 "pda/pheanstalk": "^4.0",
                 "phpstan/phpstan": "^1.4.7",
                 "phpunit/phpunit": "^10.0.7",
@@ -950,7 +950,7 @@
                 "symfony/postmark-mailer": "Required to enable support for the Postmark mail transport (^6.2).",
                 "symfony/psr-http-message-bridge": "Required to use PSR-7 bridging features (^2.0)."
             },
-            "time": "2023-12-22T14:39:10+00:00",
+            "time": "2023-12-27T14:26:28+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -999,17 +999,17 @@
         },
         {
             "name": "laravel/prompts",
-            "version": "v0.1.13",
-            "version_normalized": "0.1.13.0",
+            "version": "v0.1.14",
+            "version_normalized": "0.1.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/prompts.git",
-                "reference": "e1379d8ead15edd6cc4369c22274345982edc95a"
+                "reference": "2219fa9c4b944add1e825c3bdb8ecae8bc503bc6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/prompts/zipball/e1379d8ead15edd6cc4369c22274345982edc95a",
-                "reference": "e1379d8ead15edd6cc4369c22274345982edc95a",
+                "url": "https://api.github.com/repos/laravel/prompts/zipball/2219fa9c4b944add1e825c3bdb8ecae8bc503bc6",
+                "reference": "2219fa9c4b944add1e825c3bdb8ecae8bc503bc6",
                 "shasum": ""
             },
             "require": {
@@ -1025,13 +1025,13 @@
             "require-dev": {
                 "mockery/mockery": "^1.5",
                 "pestphp/pest": "^2.3",
-                "phpstan/phpstan": "^1.10",
+                "phpstan/phpstan": "^1.11",
                 "phpstan/phpstan-mockery": "^1.1"
             },
             "suggest": {
                 "ext-pcntl": "Required for the spinner to be animated."
             },
-            "time": "2023-10-27T13:53:59+00:00",
+            "time": "2023-12-27T04:18:09+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1053,7 +1053,7 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel/prompts/issues",
-                "source": "https://github.com/laravel/prompts/tree/v0.1.13"
+                "source": "https://github.com/laravel/prompts/tree/v0.1.14"
             },
             "install-path": "../laravel/prompts"
         },
@@ -5004,27 +5004,27 @@
         },
         {
             "name": "symfony/service-contracts",
-            "version": "v3.4.0",
-            "version_normalized": "3.4.0.0",
+            "version": "v3.4.1",
+            "version_normalized": "3.4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/service-contracts.git",
-                "reference": "b3313c2dbffaf71c8de2934e2ea56ed2291a3838"
+                "reference": "fe07cbc8d837f60caf7018068e350cc5163681a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/b3313c2dbffaf71c8de2934e2ea56ed2291a3838",
-                "reference": "b3313c2dbffaf71c8de2934e2ea56ed2291a3838",
+                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/fe07cbc8d837f60caf7018068e350cc5163681a0",
+                "reference": "fe07cbc8d837f60caf7018068e350cc5163681a0",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.1",
-                "psr/container": "^2.0"
+                "psr/container": "^1.1|^2.0"
             },
             "conflict": {
                 "ext-psr": "<1.1|>=2"
             },
-            "time": "2023-07-30T20:28:31+00:00",
+            "time": "2023-12-26T14:02:43+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -5069,7 +5069,7 @@
                 "standards"
             ],
             "support": {
-                "source": "https://github.com/symfony/service-contracts/tree/v3.4.0"
+                "source": "https://github.com/symfony/service-contracts/tree/v3.4.1"
             },
             "funding": [
                 {
@@ -5276,23 +5276,23 @@
         },
         {
             "name": "symfony/translation-contracts",
-            "version": "v3.4.0",
-            "version_normalized": "3.4.0.0",
+            "version": "v3.4.1",
+            "version_normalized": "3.4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation-contracts.git",
-                "reference": "dee0c6e5b4c07ce851b462530088e64b255ac9c5"
+                "reference": "06450585bf65e978026bda220cdebca3f867fde7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation-contracts/zipball/dee0c6e5b4c07ce851b462530088e64b255ac9c5",
-                "reference": "dee0c6e5b4c07ce851b462530088e64b255ac9c5",
+                "url": "https://api.github.com/repos/symfony/translation-contracts/zipball/06450585bf65e978026bda220cdebca3f867fde7",
+                "reference": "06450585bf65e978026bda220cdebca3f867fde7",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.1"
             },
-            "time": "2023-07-25T15:08:44+00:00",
+            "time": "2023-12-26T14:02:43+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -5337,7 +5337,7 @@
                 "standards"
             ],
             "support": {
-                "source": "https://github.com/symfony/translation-contracts/tree/v3.4.0"
+                "source": "https://github.com/symfony/translation-contracts/tree/v3.4.1"
             },
             "funding": [
                 {

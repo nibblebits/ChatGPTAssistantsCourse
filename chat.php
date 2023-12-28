@@ -2,6 +2,7 @@
 use Dragonzap\OpenAI\ChatGPT\APIConfiguration;
 use Dragonzap\OpenAI\ChatGPT\Assistant;
 use Dragonzap\OpenAI\ChatGPT\Exceptions\ThreadRunResponseLastError;
+use Dragonzap\OpenAI\ChatGPT\Exceptions\TimeoutException;
 use Dragonzap\OpenAI\ChatGPT\UnknownAssistant;
 
 require './vendor/autoload.php';
@@ -64,7 +65,9 @@ while(true)
     $input_line = fgets(STDIN);
     $conversation->sendMessage($input_line);
     try {
-        $conversation->blockUntilResponded();
+        $conversation->blockUntilResponded(1);
+    } catch(TimeoutException $ex) {
+        echo "Timed out\n";
     } catch (ThreadRunResponseLastError $ex) {
         throw $ex;
     }

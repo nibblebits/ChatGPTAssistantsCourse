@@ -1,6 +1,6 @@
 {
     "require": {
-        "dragonzap/openai-chatgpt-assistant": "^2.0"
+        "dragonzap/openai-chatgpt-assistant": "^2.1"
     },
     "config": {
         "allow-plugins": {
