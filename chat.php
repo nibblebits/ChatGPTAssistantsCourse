@@ -1,8 +1,10 @@
 <?php
 use Dragonzap\OpenAI\ChatGPT\APIConfiguration;
 use Dragonzap\OpenAI\ChatGPT\Assistant;
+use Dragonzap\OpenAI\ChatGPT\ConversationIdentificationData;
 use Dragonzap\OpenAI\ChatGPT\Exceptions\ThreadRunResponseLastError;
 use Dragonzap\OpenAI\ChatGPT\Exceptions\TimeoutException;
+use Dragonzap\OpenAI\ChatGPT\RunState;
 use Dragonzap\OpenAI\ChatGPT\UnknownAssistant;
 
 require './vendor/autoload.php';
@@ -14,7 +16,7 @@ class BettyAssistant extends Assistant
         return 'asst_43dJhZ11hFgjynmsq9GxqUJV';
     }
 
-    public function handleFunctionFillCalendar(array $arguments) : array
+    public function handleFunctionFillCalendar(array $arguments): array
     {
         $response = [
             'success' => true,
@@ -39,10 +41,10 @@ class BettyAssistant extends Assistant
             'message' => 'No such function'
         ];
 
-        switch($function) {
+        switch ($function) {
             case 'fill_calendar':
                 $response = $this->handleFunctionFillCalendar($arguments);
-            break;
+                break;
         }
 
         return $response;
@@ -52,26 +54,37 @@ class BettyAssistant extends Assistant
 
     public function saveConversationIdentificationData(Dragonzap\OpenAI\ChatGPT\ConversationIdentificationData $conversation_id_data): void
     {
-
+        echo 'FUNCTION HIT' . "\n";
     }
 
 }
 
 $betty = new BettyAssistant(new APIConfiguration('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'));
-$conversation = $betty->newConversation();
+$conversation = null;
+$save_data_string = $argv[1];
+$message = $argv[2];
 
-while(true)
+if ($save_data_string == 'na')
 {
-    $input_line = fgets(STDIN);
-    $conversation->sendMessage($input_line);
-    try {
-        $conversation->blockUntilResponded(1);
-    } catch(TimeoutException $ex) {
-        echo "Timed out\n";
-    } catch (ThreadRunResponseLastError $ex) {
-        throw $ex;
-    }
-
-    echo 'Betty: ' . $conversation->getResponseData()->getResponse() . "\n";
-    
+    $conversation = $betty->newConversation();
 }
+else
+{
+    $conversation = $betty->loadConversation(ConversationIdentificationData::fromSaveData($save_data_string));
+}
+
+$run_state = $conversation->getRunState();
+echo 'RunState: ' . $run_state->value . "\n";
+
+if ($run_state == RunState::COMPLETED)
+{
+    echo 'Betty: ' . $conversation->getResponseData()->getResponse() . "\n";
+}
+
+if ($message != 'na')
+{
+    $conversation->sendMessage($message);
+}
+
+echo 'Saved data string: ' . $conversation->getIdentificationData()->getSaveDataString() . "\n";
+
