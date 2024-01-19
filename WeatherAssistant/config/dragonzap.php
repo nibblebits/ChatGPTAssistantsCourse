@@ -1,4 +1,5 @@
 <?php
+use App\Assistants\BettyAssistant;
 
 /*
  * Licensed under GPLv2
@@ -11,5 +12,11 @@
 return [
     'openai' => [
         'key' => env('OPENAI_CHATGPT_KEY', 'default-key-value')
+    ],
+
+    'assistants' => [
+        'betty' => [
+            'class' => BettyAssistant::class
+        ]
     ]
 ];
