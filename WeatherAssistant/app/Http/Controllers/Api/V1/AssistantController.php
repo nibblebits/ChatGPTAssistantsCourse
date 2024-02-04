@@ -4,6 +4,7 @@ use App\Exceptions\Assistants\NoSuchAssistantException;
 use App\Http\Controllers\Api\V1\APIController;
 use App\Http\Requests\Api\V1\AssistantSendMessageRequest;
 use Dragonzap\OpenAI\ChatGPT\Assistant;
+use Dragonzap\OpenAI\ChatGPT\ConversationIdentificationData;
 
 class AssistantController extends APIController
 {
@@ -39,13 +40,24 @@ class AssistantController extends APIController
 
         $message = $request->message;
 
-        $conversation = $assistant->newConversation();
+        if ($request->has('save_data_string'))
+        {
+            $conversation = 
+                $assistant->loadConversation(
+                    ConversationIdentificationData::fromSaveData($request->save_data_string)
+                );
+        }
+        else
+        {
+            $conversation = $assistant->newConversation();
+        }
         $conversation->sendMessage($message);
         $conversation->blockUntilResponded();
 
         return response()->json([
             'message' => $message,
-            'response' => $conversation->getResponseData()->getResponse()
+            'response' => $conversation->getResponseData()->getResponse(),
+            'save_data_string' => $conversation->getIdentificationData()->getSaveDataString()
         ], 200);
     }
 }

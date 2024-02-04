@@ -22,7 +22,8 @@ class AssistantSendMessageRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'message' => 'required'
+            'message' => 'required',
+            'save_data_string' => 'sometimes'
         ];
     }
 }
