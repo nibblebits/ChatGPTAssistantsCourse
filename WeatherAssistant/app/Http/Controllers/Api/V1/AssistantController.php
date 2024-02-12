@@ -57,7 +57,8 @@ class AssistantController extends APIController
         return response()->json([
             'message' => $message,
             'response' => $conversation->getResponseData()->getResponse(),
-            'save_data_string' => $conversation->getIdentificationData()->getSaveDataString()
+            'save_data_string' => $conversation->getIdentificationData()->getSaveDataString(),
+            'function_calls' => $conversation->getResponseData()->getFunctionCalls()
         ], 200);
     }
 }

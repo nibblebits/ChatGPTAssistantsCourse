@@ -1,5 +1,6 @@
 <?php
 use App\Assistants\BettyAssistant;
+use App\Assistants\WeatherAssistant;
 
 /*
  * Licensed under GPLv2
@@ -17,6 +18,9 @@ return [
     'assistants' => [
         'betty' => [
             'class' => BettyAssistant::class
+        ],
+        'weather' => [
+            'class' => WeatherAssistant::class
         ]
     ]
 ];
