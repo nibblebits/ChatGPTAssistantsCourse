@@ -22,5 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // V1 API ROUTES
 // Unauthenticated routes
 
-Route::get('/v1/assistants', [AssistantController::class,'index'])->name('assistants.home');
-Route::post('/v1/assistant/{id}/send_message', [AssistantController::class,'sendMessage'])->name('assistant.send_message');
+Route::get('/v1/assistants', [AssistantController::class,'index'])->name('api.assistants.home');
+Route::post('/v1/assistant/{id}/send_message', [AssistantController::class,'sendMessage'])->name('api.assistant.send_message');

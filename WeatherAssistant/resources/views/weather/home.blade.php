@@ -41,7 +41,7 @@
                         </div>
                     </div>
                     <div class="d-flex flex-row align-items-center form-group px-3">
-                        <input type="text" class="form-control" placeholder="Type your message" />
+                        <input type="text" class="form-control message-input" placeholder="Type your message" />
                         <button class="btn send-btn"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
                     </div>
                     <div class="pt-1"></div>
@@ -50,28 +50,98 @@
             </div>
 
             <div class="col-md-6 weather-data">
-                
+
             </div>
         </div>
 
         <div class="row mt-4">
             <div class="col-md-12">
                 <p class="text-muted" style="text-align: center">License: blah blah blah</p>
-            </div>  
+            </div>
         </div>
     </div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-    crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-    crossorigin="anonymous"></script>
-    
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
+    </script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var save_data_string = null;
+
+            $('.typing-indicator-box').hide();
+
+            function scrollToBottom() {
+                var chatMessages = $('.chat-messages');
+                chatMessages.scrollTop(chatMessages.prop("scrollHeight"));
+            }
+
+            function sendMessage()
+            {
+                var userInput = $('.message-input').val().trim();
+                if (userInput === '')
+                {
+                    alert('Please type your message');
+                    return;
+                }
+
+                var userMessageHtml = '<div class="d-flex flex-row p-3">' +
+                                      '<div class="bg-white mr-2 p-3"><span>' + userInput + '</span></div>' +
+                                      ' <i class="fa-solid fa-person" style="height: 30px;"></i>' +
+                                      '</div>';
+
+                $('.chat-card .chat-messages').append(userMessageHtml);
+                scrollToBottom();
+                $('.typing-indicator-box').show();
+
+                var requestData = {
+                    message: userInput,
+                    save_data_string:save_data_string
+                }
+
+                $.ajax({
+                    url:"{{route('api.assistant.send_message', 'weather')}}",
+                    type:"POST",
+                    contentType:"application/json",
+                    data:JSON.stringify(requestData),
+                    success: function(response) {
+                        console.log(response);
+                        var replyText = response.response;
+                        var replyHtml = '<div class="d-flex flex-row p-3">' +
+                                        ' <i class="fa-solid fa-person" style="height: 30px;"></i>' +
+                                        '<div class="chat ml-2 p-3">' + replyText + '</div>' +
+                                        '</div>';
+                        $('.chat-card .chat-messages').append(replyHtml);
+                        $('.typing-indicator-box').hide();
+
+                        // Create weather icons and append TODO
+                        // TODO....
+
+                        scrollToBottom();
+                        save_data_string = response.save_data_string;
+                        
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("AJAX request failed: " + error);
+                        $('.typing-indicator-box').hide();
+                    }
+                })
+            }
+
+            $('.send-btn').click(function() {
+                sendMessage();
+            });
+        });
+    </script>
+
+
 </body>
 
 </html>

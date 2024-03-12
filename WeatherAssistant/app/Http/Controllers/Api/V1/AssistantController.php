@@ -40,7 +40,7 @@ class AssistantController extends APIController
 
         $message = $request->message;
 
-        if ($request->has('save_data_string'))
+        if ($request->has('save_data_string') && $request->save_data_string)
         {
             $conversation = 
                 $assistant->loadConversation(
