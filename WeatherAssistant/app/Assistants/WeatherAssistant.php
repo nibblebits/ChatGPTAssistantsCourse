@@ -1,6 +1,10 @@
 <?php
 
 namespace App\Assistants;
+use Cmfcmf\OpenWeatherMap;
+use Http\Factory\Guzzle\RequestFactory;
+use Http\Adapter\Guzzle7\Client as GuzzleAdapter;
+
 use Dragonzap\OpenAI\ChatGPT\Assistant;
 use Dragonzap\OpenAI\ChatGPT\ConversationIdentificationData;
 
@@ -14,12 +18,22 @@ class WeatherAssistant extends Assistant
 
     private function handleFunctionGetWeather(array $arguments) : array
     {
+        $response = ['state' => 'failed', 'message' => 'Unknown error has occured'];
+        $httpRequestFactory = new RequestFactory();
+        $httpClient = GuzzleAdapter::createWithConfig([]);
+        $owm = new OpenWeatherMap(config('services.openweathermap.key'), $httpClient, $httpRequestFactory);
+
         $location = $arguments['location'];
-        return [
-            'success' => true,
-            'celcius' => -70,
-            'message' => $location . ' is extremly cold, and snowing, dangerous weather conditions'
-        ];
+        try {
+            $forecast = $owm->getWeather($location, 'metric');
+            $response = [
+                'state' => 'success',
+                'forecast' => print_r($forecast, true)
+            ];
+        } catch(\Exception $ex) {
+            $response = ['state' => 'failed', 'message' => 'Problem obtaining the weather for city: ' . $location];
+        }
+        return $response;
     }
 
     private function handleFunctionHandleWeather(array $arguments) : array
