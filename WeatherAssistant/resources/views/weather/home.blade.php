@@ -26,7 +26,7 @@
 
                     <div class="chat-messages">
                         <div class="d-flex flex-row p-3">
-                            <i class="fa-solid fa-person" style="height: 30px;"></i>
+                            <img src="{{asset('images/chat/icons/circled-user-female.png')}}" height="30"/>
                             <div class="chat ml-2 p-3">I'm a helpful weather assistant, let me know which city you want
                                 weather information on?</div>
                         </div>
@@ -34,7 +34,7 @@
 
                     <div class="d-flex flex-row p-3">
                         <div class="typing-indicator-box">
-                            <i class="fa-solid fa-person" style="height: 30px;"></i>
+                            <img src="{{asset('images/chat/icons/circled-user-female.png')}}" height="30"/>
                             <div class="typing-indicator">
                                 <span class="dot">.</span><span class="dot">.</span><span class="dot">.</span>
                             </div>
@@ -94,7 +94,7 @@
 
                 var userMessageHtml = '<div class="d-flex flex-row p-3">' +
                                       '<div class="bg-white mr-2 p-3"><span>' + userInput + '</span></div>' +
-                                      ' <i class="fa-solid fa-person" style="height: 30px;"></i>' +
+                                      '<img src="{{asset('images/chat/icons/circled-user-male.png')}}" height="30" />' +
                                       '</div>';
 
                 $('.chat-card .chat-messages').append(userMessageHtml);
@@ -115,7 +115,7 @@
                         console.log(response);
                         var replyText = response.response;
                         var replyHtml = '<div class="d-flex flex-row p-3">' +
-                                        ' <i class="fa-solid fa-person" style="height: 30px;"></i>' +
+                                        '<img src="{{asset('images/chat/icons/circled-user-female.png')}}" height="30" />' +
                                         '<div class="chat ml-2 p-3">' + replyText + '</div>' +
                                         '</div>';
                         $('.chat-card .chat-messages').append(replyHtml);
