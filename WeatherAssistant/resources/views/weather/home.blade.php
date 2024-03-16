@@ -78,6 +78,32 @@
 
             $('.typing-indicator-box').hide();
 
+            function applyWeatherCard(response) {
+                var allWeatherData = response.function_calls.filter(call => call.function_name == "handle_weather");
+                allWeatherData.forEach(weatherData => {
+                    var city = weatherData.function_arguments.location;
+                    var temperature = weatherData.function_arguments.celcius;
+                    var weatherDescription = 'The weather description';
+                    var iconUrl = 'images/chat/icons/weather/clouds.png';
+
+                    var weatherCardHtml = '<div class="weather-card">' +
+                                    '<div class="weather-content">' + 
+                                    '<div class="weather-card-header">' +
+                                    '<span class="city-name">' + city + '</span>' +
+                                    '</div>' + 
+                                    '<div class="weather-card-body">' + 
+                                    '<p class="temperature">Temperature: ' + temperature + 'C</p>' + 
+                                    '<p class="weather-description">' + weatherDescription + '</p>' +
+                                    '</div>' + 
+                                    '</div>' + 
+                                    '<div class="weather-icon">' + 
+                                    '<img src="' + iconUrl + '" alt="Weather icon" />' + 
+                                    '</div>' + 
+                                    '</div>';
+                    $('.weather-data').append(weatherCardHtml);
+                });
+
+            }
             function scrollToBottom() {
                 var chatMessages = $('.chat-messages');
                 chatMessages.scrollTop(chatMessages.prop("scrollHeight"));
@@ -121,8 +147,7 @@
                         $('.chat-card .chat-messages').append(replyHtml);
                         $('.typing-indicator-box').hide();
 
-                        // Create weather icons and append TODO
-                        // TODO....
+                        applyWeatherCard(response);
 
                         scrollToBottom();
                         save_data_string = response.save_data_string;
