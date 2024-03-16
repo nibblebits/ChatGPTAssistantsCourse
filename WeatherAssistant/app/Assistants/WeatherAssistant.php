@@ -38,8 +38,11 @@ class WeatherAssistant extends Assistant
 
     private function handleFunctionHandleWeather(array $arguments) : array
     {
+        $weather_type = $arguments['weather_type'];
+        $icon_url = asset('images/chat/icons/weather/' . $weather_type . '.png');
         return [
-            'success' => true
+            'success' => true,
+            'icon_url' => $icon_url
         ];
     }
 

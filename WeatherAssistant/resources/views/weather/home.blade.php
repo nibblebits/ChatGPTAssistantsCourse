@@ -83,8 +83,8 @@
                 allWeatherData.forEach(weatherData => {
                     var city = weatherData.function_arguments.location;
                     var temperature = weatherData.function_arguments.celcius;
-                    var weatherDescription = 'The weather description';
-                    var iconUrl = 'images/chat/icons/weather/clouds.png';
+                    var weatherDescription = weatherData.function_arguments.additional_comments;
+                    var iconUrl = weatherData.response.icon_url;
 
                     var weatherCardHtml = '<div class="weather-card">' +
                                     '<div class="weather-content">' + 
