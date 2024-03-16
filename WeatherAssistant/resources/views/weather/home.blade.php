@@ -132,11 +132,20 @@
                         console.error("AJAX request failed: " + error);
                         $('.typing-indicator-box').hide();
                     }
-                })
+                });
+
+                $('.message-input').val('');
             }
 
             $('.send-btn').click(function() {
                 sendMessage();
+            });
+
+            $('.message-input').keypress(function(e) {
+                if (e.which == 13) {
+                    sendMessage();
+                    e.preventDefault();
+                }
             });
         });
     </script>
